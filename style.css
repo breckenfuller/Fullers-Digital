@@ -1,0 +1,141 @@
+/* --- FULLER'S DIGITAL: ELITE DESIGN SYSTEM (FINAL SYNC) --- */
+:root {
+    --bg-black: #050505;
+    --card-grey: #0f0f0f;
+    --border-grey: #222;
+    --brand-blue: #0066ff;
+    --text-white: #ffffff;
+    --text-dim: #999;
+    --glow: rgba(0, 102, 255, 0.4);
+    --container-width: 1400px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.9;
+    overflow-x: hidden;
+}
+
+.container { max-width: var(--container-width); margin: 0 auto; padding: 0 60px; }
+
+/* Navigation - 120px Logo & Updated Links */
+nav {
+    background: rgba(5, 5, 5, 0.98);
+    border-bottom: 1px solid var(--border-grey);
+    padding: 40px 0; 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-flex { display: flex; justify-content: space-between; align-items: center; }
+
+.logo img { 
+    height: 120px; /* Big Logo */
+    width: auto; 
+    filter: drop-shadow(0 0 20px var(--glow));
+}
+
+.nav-links a {
+    color: var(--text-white);
+    text-decoration: none;
+    margin-left: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--brand-blue); }
+
+.nav-cta {
+    background: var(--brand-blue);
+    color: white !important;
+    padding: 18px 40px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    box-shadow: 0 0 25px var(--glow);
+    transition: 0.4s;
+    display: inline-block;
+}
+
+/* Specific Fix for the Submit Button */
+.form-submit-btn {
+    background: var(--brand-blue);
+    color: white !important;
+    padding: 22px 40px;
+    border-radius: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1rem;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 25px var(--glow);
+    transition: 0.4s;
+    display: block; /* Ensures visibility */
+}
+
+.form-submit-btn:hover { transform: translateY(-3px); box-shadow: 0 0 50px var(--brand-blue); }
+
+/* Elite Section Spacing */
+section { padding: 180px 0; border-bottom: 1px solid var(--border-grey); }
+
+header { padding: 200px 0 120px; text-align: center; }
+h1 { font-size: 5.5rem; font-weight: 900; line-height: 1; letter-spacing: -4px; margin-bottom: 50px; }
+h1 span { color: var(--brand-blue); text-shadow: 0 0 35px var(--brand-blue); }
+.hero-p { font-size: 1.5rem; color: var(--text-dim); max-width: 1000px; margin: 0 auto 70px; }
+
+/* Grid Systems */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; }
+.card {
+    background: var(--card-grey);
+    padding: 70px;
+    border-radius: 25px;
+    border: 1px solid var(--border-grey);
+}
+.card h3 { font-size: 2rem; margin-bottom: 25px; color: var(--brand-blue); }
+
+/* Contact Page Layout */
+.split-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 140px; align-items: start; }
+.form-box { background: var(--card-grey); padding: 80px; border-radius: 25px; border: 1px solid var(--brand-blue); }
+.form-group { margin-bottom: 35px; }
+.form-group label { display: block; margin-bottom: 12px; font-weight: 700; color: var(--text-dim); }
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 22px; background: #000; border: 1px solid var(--border-grey); color: white; border-radius: 10px; font-size: 1.1rem;
+}
+
+/* Social Buttons */
+.social-flex { display: flex; gap: 25px; margin-top: 60px; }
+.social-link {
+    padding: 18px 35px;
+    border: 2px solid var(--brand-blue);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 800;
+}
+.social-link:hover { background: var(--brand-blue); }
+
+footer { padding: 100px 0; text-align: center; color: var(--text-dim); border-top: 1px solid var(--border-grey); }
+
+/* Ensure the button stays visible on all screens */
+.form-submit-btn, #submit-button {
+    display: block !important;
+    background-color: var(--brand-blue) !important;
+    color: white !important;
+    min-height: 60px;
+}
+
+#submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 40px var(--brand-blue);
+}

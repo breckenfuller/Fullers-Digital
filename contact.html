@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us | Fuller's Digital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #050505; color: white;"> <!-- Forced background color -->
+    <nav>
+        <div class="container nav-flex">
+            <a href="index.html" class="logo"><img src="fullers digital logo.jpg" alt="Logo"></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">What We Do</a>
+                <a href="contact.html" class="nav-cta">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container" style="padding-top:120px; padding-bottom:120px;">
+        <div class="split-layout">
+            <div>
+                <h1 style="text-align:left; font-size:4.5rem; letter-spacing:-3px; margin-bottom: 20px;">Contact <span style="color: #0066ff;">Us.</span></h1>
+                <p style="font-size:1.3rem; color:#999; margin-bottom:80px;">Reach out today for a consultation and begin your digital transformation.</p>
+                
+                <div style="margin-bottom:50px;">
+                    <p style="color:#0066ff; font-weight:800; text-transform:uppercase; font-size:0.9rem; letter-spacing:2px;">Official Email</p>
+                    <p style="font-size:2rem; font-weight:700;">Fullers-Digital@outlook.com</p>
+                </div>
+
+                <div style="margin-bottom:50px;">
+                    <p style="color:#0066ff; font-weight:800; text-transform:uppercase; font-size:0.9rem; letter-spacing:2px;">Direct Line</p>
+                    <p style="font-size:2rem; font-weight:700;">07551947320</p>
+                </div>
+
+                <div class="social-flex">
+                    <a href="https://instagram.com/fullersdigital" target="_blank" class="social-link">INSTAGRAM</a>
+                    <a href="https://tiktok.com/@fullersdigital" target="_blank" class="social-link">TIKTOK</a>
+                </div>
+            </div>
+
+            <div class="form-box" style="background: #0f0f0f; padding: 60px; border-radius: 25px; border: 1px solid #0066ff;">
+                <!-- Success State -->
+                <div id="success-state" style="display:none; text-align:center; padding: 40px 0;">
+                    <div style="font-size: 5rem; margin-bottom: 20px; color: #0066ff;">✓</div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #0066ff;">Submitted</h2>
+                    <p style="font-size: 1.2rem; color: #999;">Thank you for contacting Fuller's Digital. We will review your brief shortly.</p>
+                </div>
+
+                <form id="contact-form">
+                    <h2 style="margin-bottom:40px; font-size:2.5rem; letter-spacing:-1px;">Enquiry Form</h2>
+                    <div class="form-group"><label>Full Name</label><input type="text" name="name" required></div>
+                    <div class="form-group"><label>Email Address</label><input type="email" name="email" required></div>
+                    <div class="form-group">
+                        <label>Enquiry Type</label>
+                        <select name="service">
+                            <option>Bespoke Design</option>
+                            <option>E-Commerce</option>
+                            <option>Maintenance</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Message</label><textarea name="message" rows="5" required></textarea></div>
+                    
+                    <!-- THE BUTTON WITH INLINE STYLES (Guaranteed to show) -->
+                    <button type="submit" id="submit-button" 
+                        style="display: block !important; visibility: visible !important; width: 100% !important; background-color: #0066ff !important; color: white !important; padding: 25px !important; border-radius: 8px !important; font-weight: 800 !important; font-size: 1.1rem !important; text-transform: uppercase !important; border: none !important; cursor: pointer !important; opacity: 1 !important; margin-top: 20px !important;">
+                        Submit Enquiry
+                    </button>
+                    
+                    <p id="error-message" style="display:none; color:#ff4a4a; margin-top:20px; text-align:center;">Error. Please try again.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>&copy; 2024 Fuller's Digital Web Designers.</footer>
+
+    <script>
+        const form = document.getElementById("contact-form");
+        const successState = document.getElementById("success-state");
+        const submitBtn = document.getElementById("submit-button");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            submitBtn.innerHTML = "SENDING...";
+            submitBtn.style.opacity = "0.5";
+            
+            const data = new FormData(event.target);
+            fetch("https://formspree.io/f/mojyvyrv", {
+                method: "POST",
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    form.style.display = "none";
+                    successState.style.display = "block";
+                } else {
+                    document.getElementById("error-message").style.display = "block";
+                    submitBtn.innerHTML = "SUBMIT ENQUIRY";
+                    submitBtn.style.opacity = "1";
+                }
+            }).catch(error => {
+                document.getElementById("error-message").style.display = "block";
+                submitBtn.innerHTML = "SUBMIT ENQUIRY";
+                submitBtn.style.opacity = "1";
+            });
+        }
+        form.addEventListener("submit", handleSubmit);
+    </script>
+</body>
+</html>
